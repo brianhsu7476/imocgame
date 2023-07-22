@@ -96,7 +96,7 @@ document.onkeydown=function(e){
 			for(var i=0; i<6; ++i)for(var j=0; j<4; ++j)if(lock[i][j]==0)a[i][j][b[i][j]]=a1[i][j];
 		}
 		else if(s=='[')a[px][py][b[px][py]]=Math.ceil(Math.sqrt(a[px][py][b[px][py]]));
-		else if(s=='?')alert('>a：分裂a到新的那格\n<：反演\n:：一目十行\n[：開根號取上高斯');
+		else if(s=='?')alert('使用wasd可以移動到想要改變的格子或是隊伍\n按c可以改變該格顏色（可以使用隊伍顏色來區分鐵鎖連環，但並沒有自動鐵鎖連環的效果）或是bunger狀態\n按e切換要做更動的分裂格\n按z復原\n按q取消復原\n=a：指定成a\n+a：增加a\n其他符號以此類推\n>a：分裂a到新的那格\n<：反演\n:：一目十行\n[：開根號取上高斯');
 		else alert('Unreadable!');
 		/*else if(s[0]=='<'){
 			if(s.length!=3){alert('unreadable'); return 0;}
