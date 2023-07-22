@@ -1,0 +1,37 @@
+body{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+h1{
+    font-size: 72px;
+}
+table, p{
+	text-align: center;
+	font-size: 36px;
+}
+input{
+	font-size: 36px;
+}
+.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+.on{
+	color: orange;
+}
+.lock{
+	color: red;
+}
+.c0{
+	color: white;	
+}
+.c1{
+	color: green;
+}
+.c2{
+	color: blue;
+}
+.c3{
+	color: purple;
+}
