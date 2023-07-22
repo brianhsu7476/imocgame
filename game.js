@@ -19,7 +19,7 @@ function upd(){
 	for(var i=0; i<a[px][py].length; ++i){
 		if(i==b[px][py])s+='<td class="on" '+w+'>';
 		else s+='<td '+w+'>';
-		s+=String(Math.round(a[px][py][i]*10000/10000))+'</td>';
+		s+=String(Math.round(a[px][py][i]*10000)/10000)+'</td>';
 	}
 	s+='</tr>\n';
 	stack.innerHTML=s;
