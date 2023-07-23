@@ -1,5 +1,13 @@
-var a=[], b=[], c=[], lock=[], chain=[0, 0, 0, 0, 0, 0], table=document.querySelector('#table'), input=document.querySelector('input'), stack=document.querySelector('#stack'), px=0, py=0, now=0;
+var a=[], b=[], c=[], lock=[], chain=[0, 0, 0, 0, 0, 0], px=0, py=0, now=0;
 for(var i=0; i<6; ++i)a.push([[0], [0], [0], [0]]), b.push([0, 0, 0, 0]), lock.push([0, 0, 0, 0]);
+
+function toStr(n){
+	n=String(n);
+	var i=0;
+	for(; i<n.length; ++i)if(n[i]=='e')break;
+	if(n.length>10)return n.slice(0, i-n.length+10)+n.slice(i);
+	return n;
+}
 
 function upd(){
 	s='';
@@ -9,20 +17,26 @@ function upd(){
 			if(lock[i][j])s+='<td class="lock">';
 			else if(i==px&&j==py)s+='<td class="on">';
 			else s+='<td>';
-			s+=String(Math.round(a[i][j][b[i][j]]*10000)/10000)+'</td>';
+			s+=toStr(a[i][j][b[i][j]])+'</td>';
 		}
 		s+='</tr>\n';
 	}
-	table.innerHTML=s;
-	n=a[px][py].length, w='width="'+String(100/(n+1))+'%"';
-	s='<tr><td '+w+'>所有值：</td>';
-	for(var i=0; i<a[px][py].length; ++i){
-		if(i==b[px][py])s+='<td class="on" '+w+'>';
-		else s+='<td '+w+'>';
-		s+=String(Math.round(a[px][py][i]*10000)/10000)+'</td>';
+	document.querySelector('#table').innerHTML=s;
+	if(py==-1)s='<tr><td width="50%">所有值：</td><td>第 '+String(px+1)+' 組</td>';
+	else{
+		n=a[px][py].length, w='width="'+String(100/(n+1))+'%"';
+		s='<tr><td '+w+'>所有值：</td>';
+		for(var i=0; i<a[px][py].length; ++i){
+			if(i==b[px][py])s+='<td class="on" '+w+'>';
+			else s+='<td '+w+'>';
+			s+=toStr(a[px][py][i])+'</td>';
+		}
 	}
 	s+='</tr>\n';
-	stack.innerHTML=s;
+	document.querySelector('#stack').innerHTML=s;
+	s='精確值： ';
+	if(py!=-1)s+=String(a[px][py][b[px][py]]);
+	document.querySelector('#precision').innerHTML=s;
 }
 setInterval(upd, 1000/30);
 
@@ -61,7 +75,7 @@ document.onkeydown=function(e){
 		e.keyCode=0, e.returnValue=false, e.cancelBubble=false;
 	}
 	if(k==13||k==108){
-		s=input.value;
+		s=document.querySelector('input').value;
 		if(s.length==0||py==-1){alert('Unreadable!'); return 0;}
 		if(c.length>now)c[now]=copy(a);
 		else c.push(copy(a));
