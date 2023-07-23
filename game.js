@@ -22,10 +22,10 @@ function upd(){
 		s+='</tr>\n';
 	}
 	document.querySelector('#table').innerHTML=s;
-	if(py==-1)s='<tr><td width="50%">所有值：</td><td>第 '+String(px+1)+' 組</td>';
+	if(py==-1)s='<tr><th width="50%">所有值</th><td>第 '+String(px+1)+' 組</td>';
 	else{
 		n=a[px][py].length, w='width="'+String(100/(n+1))+'%"';
-		s='<tr><td '+w+'>所有值：</td>';
+		s='<tr><th '+w+'>所有值</th>';
 		for(var i=0; i<a[px][py].length; ++i){
 			if(i==b[px][py])s+='<td class="on" '+w+'>';
 			else s+='<td '+w+'>';
