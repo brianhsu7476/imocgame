@@ -17,6 +17,7 @@ function upd(){
 			if(lock[i][j])s+='<td class="lock">';
 			else if(i==px&&j==py)s+='<td class="on">';
 			else s+='<td>';
+			if(isNaN(a[i][j][b[i][j]])||1/a[i][j][b[i][j]]==0)a[i][j][b[i][j]]=0;
 			s+=toStr(a[i][j][b[i][j]])+'</td>';
 		}
 		s+='</tr>\n';
